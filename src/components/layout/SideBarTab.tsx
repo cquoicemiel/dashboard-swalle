@@ -1,13 +1,19 @@
+import Link from "next/link"
 
 type SideBarTabProps = {
-    name: string
+    name: string,
+    url: string,
+    toggle: (value: boolean) => void
 }
 
 
-export default function SideBarTab({name}: SideBarTabProps){
+export default function SideBarTab({name, url, toggle}: SideBarTabProps){
     return(
-        <div className="blur-card-no-shadow bg-white rounded-sm w-full h-8 p-2.5 flex justify-start items-center cursor-pointer transition-all duration-75 ease-in-out hover:text-red-400">
-            <p>{name}</p>
-        </div>
+        <Link href={url} onClick={() => toggle(false)} passHref>
+            <div className="blur-card-white bg-white rounded-sm w-full h-8 p-2.5 flex justify-start items-center cursor-pointer transition-all duration-75 ease-in-out hover:">
+                <p>{name}</p>
+            </div>
+        </Link>
+        
     )
 }
