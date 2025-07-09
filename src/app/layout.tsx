@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Footer from "@/components/layout/Footer";
+import SideBar from "@/components/layout/SideBar";
 
 
 const helvetica = localFont({
@@ -25,6 +26,7 @@ export default function RootLayout({
       >
         {children}
         <Footer/>
+        <SideBar/>
       </body>
       
     </html>

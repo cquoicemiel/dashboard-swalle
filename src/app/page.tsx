@@ -7,7 +7,7 @@ export default function Home() {
     <>
     <div className="min-h-dvh w-full flex border-b border-black">
       <div className="flex-[5] border-black relative">
-        <h1 className="font-bold text-2xl absolute top-2.5 left-2.5">Dashboard Swall-E</h1>
+        <h1 className="font-bold text-2xl fixed top-2.5 left-[3.875rem]">Dashboard Swall-E</h1>
         <ThreeScene/>
       </div>
       <div className="flex-[3] border-l border-black box-border overflow-y-auto flex flex-col">
@@ -28,6 +28,8 @@ export default function Home() {
     <div className="min-h-dvh">
 
     </div>
+    
+    
     </>
   );
 }

@@ -100,17 +100,11 @@ export default function ThreeScene() {
     const ambient = new THREE.AmbientLight(0xffffff, 3);
     scene.add(ambient);
 
-    const povLight = new THREE.PointLight(0xffffff, 1000, 10000);
+    const povLight = new THREE.PointLight(0xffffff, 500, 100000);
     povLight.position.set(0, 0, 0); // relative à la caméra
     camera.add(povLight);
     scene.add(camera);
     //---------------------------------
-
-    const geometry = new THREE.BoxGeometry(0.2, 0.2, 0.2);
-    const material = new THREE.MeshStandardMaterial({ color: 0xff0000 });
-    const cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
-    cube.position.set(0, 0, 15)
 
     const animate = () => {
       if(modele){
