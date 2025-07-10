@@ -35,7 +35,7 @@ export default function SideBar(){
                 <Image src={`${state? "/close.svg" : "/menu.svg"}`} alt="Toggle navigation side menu" fill/>
             </div>
         </div>  
-        <div className={`blur-card fixed top-[3.275rem] p-2.5 flex flex-col gap-2 rounded-sm left-0 bottom-0 z-20 w-[20dvw] ${state? "" : "hidden pointer-events-none"}`}>
+        <div className={`blur-card fixed top-[3.275rem] p-2.5 flex flex-col gap-2 rounded-sm left-0 bottom-0 z-20 w-[15vw] ${state? "" : "hidden pointer-events-none"}`}>
 
         {tabs.map((e) => {
             return (e.link? <SideBarTab key={e.name} name={e.name} url={e.link} toggle={toggleState}/>
