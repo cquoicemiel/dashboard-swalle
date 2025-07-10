@@ -22,13 +22,14 @@ export default function ScatterWithLevels({data}: ScatterWithLevelsProps){
 
     return(
         <div className="h-full w-full flex flex-col">
-            <div className="flex-[4]">
+            <div className="flex-[5]">
                 <div className="absolute top-1/2 left-1/2 translate-[-50%]">
-                    Chargement du Plot...
+                    Chargement des données...
                 </div>
                 <ScatterPlot data={data[level - 1]} title={`Scatter Plot 3D - Niveau ${level}`}/>
             </div>
-            <div className="flex-[1] flex justify-center items-center">
+            <div className="flex-[1] flex gap-2.5 justify-center items-center">
+                <div>1</div>
                 <input
                     type="range"
                     min="1"
@@ -37,6 +38,7 @@ export default function ScatterWithLevels({data}: ScatterWithLevelsProps){
                     value={level}
                     onChange={(e) => setLevel(parseInt(e.target.value))}
                     className="
+                     bg-amber-300
                     w-[33%] h-4 appearance-none bg-gray-300 rounded-full cursor-pointer
                     [&::-webkit-slider-thumb]:appearance-none
                     [&::-webkit-slider-thumb]:h-5
@@ -54,6 +56,8 @@ export default function ScatterWithLevels({data}: ScatterWithLevelsProps){
                     [&::-moz-range-thumb]:border-white
                     "
                 />
+                <div>18</div>
+              
             </div>
         </div>
     )

@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Footer from "@/components/layout/Footer";
 import SideBar from "@/components/layout/SideBar";
+import DarkMode from "@/components/layout/DarkMode";
 
 
 const helvetica = localFont({
@@ -27,6 +28,7 @@ export default function RootLayout({
         {children}
         <Footer/>
         <SideBar/>
+        <DarkMode/>
       </body>
       
     </html>
