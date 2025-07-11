@@ -33,13 +33,13 @@ export default function Plot({type, data}: PlotProps){
     const trace: Partial<Plotly.PlotData> = {
       x: data.x,
       y: data.y,
-      type: plotType,
+      type: plotType as any,
       mode: mode,
       marker: { color: "blue" },
     };
 
     const layout: Partial<Plotly.Layout> = {
-      title: `Type: ${type}`,
+      title: `Type: ${type}` as any,
       margin: { t: 30, l: 30, r: 10, b: 30 },
       autosize: true,
     };

@@ -16,22 +16,19 @@ export default function ThreeScene() {
     if (!containerRef.current) return;
 
     const container = containerRef.current;
-
     const scene = new THREE.Scene();
-
     const camera = new THREE.PerspectiveCamera(55, container.clientWidth / container.clientHeight, 0.1, 1000);
     camera.position.z = 10;
 
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize(container.clientWidth, container.clientHeight);
-    renderer.setClearColor(0xffffff);
+    // On ne définit plus la couleur ici, on le fera dynamiquement
     container.appendChild(renderer.domElement);
 
     const controls = new OrbitControls(camera, renderer.domElement);
-
     
-
-// ------------ GUI -----------------------------------------
+    // ... (votre code pour GUI et GLTFLoader reste identique) ...
+    // ------------ GUI -----------------------------------------
     const gui = new GUI({ autoPlace: false });
     container.appendChild(gui.domElement);
 
@@ -58,13 +55,11 @@ export default function ThreeScene() {
           }
         });
       }
-});
-//-----------------------------------------------------666
+    });
+    //-----------------------------------------------------
 
     const loader = new GLTFLoader();
-
     let modele: any;
-
     loader.load(
         '/swalle_conduit.glb', 
         function(gltf: any){
@@ -80,9 +75,7 @@ export default function ThreeScene() {
                 child.material.roughness = 0.35;
               }
         });
-
             scene.add(modele)
-
         },
         function (xhr: any) {
             if (xhr.total && xhr.total > 0) {
@@ -96,7 +89,7 @@ export default function ThreeScene() {
         }
     )
 
-    // --------------------    LIGHTS
+    // --------------------     LIGHTS
     const ambient = new THREE.AmbientLight(0xffffff, 3);
     scene.add(ambient);
 
@@ -105,6 +98,31 @@ export default function ThreeScene() {
     camera.add(povLight);
     scene.add(camera);
     //---------------------------------
+    
+    // 🎨 NOUVEAU : Fonction pour mettre à jour la couleur de fond
+    const updateBackgroundColor = () => {
+      // On vérifie si la classe 'dark' est présente sur l'élément <html>
+      const isDarkMode = document.documentElement.classList.contains('dark');
+      const lightColor = new THREE.Color(0xffffff); // Blanc
+      const darkColor = new THREE.Color(0x0a0a0a);  // Votre couleur de fond sombre
+      
+      renderer.setClearColor(isDarkMode ? darkColor : lightColor);
+    };
+
+    // 👁️ NOUVEAU : Création de l'observateur de DOM
+    const observer = new MutationObserver((mutations) => {
+      for (const mutation of mutations) {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+          updateBackgroundColor();
+        }
+      }
+    });
+
+    // On lance l'observation sur la balise <html>
+    observer.observe(document.documentElement, { attributes: true });
+
+    // On appelle la fonction une première fois au chargement pour avoir la bonne couleur initiale
+    updateBackgroundColor();
 
     const animate = () => {
       if(modele){
@@ -114,12 +132,14 @@ export default function ThreeScene() {
     };
     renderer.setAnimationLoop(animate);
 
-    return () => { //nettoyage de la scene
+    return () => { // Nettoyage de la scène
+      // 🧹 NOUVEAU : Arrêter l'observation pour éviter les fuites de mémoire
+      observer.disconnect();
       gui.destroy();
       renderer.dispose();
       container.removeChild(renderer.domElement);
     };
-  }, []);
+  }, []); // Le tableau de dépendances reste vide
 
   return (
     <div

@@ -1,32 +1,45 @@
 import Image from "next/image";
 import Link from "next/link";
+
+
 export default function Footer(){
     return(
-        <footer className={"relative border-black border-t h-24 w-full flex p-2"}>
+        <footer className={"relative border-foreground border-t h-24 w-full flex p-2"}>
             <div className="flex-[1] relative flex flex-col items-start justify-center gap-1">
-                <p className="block h-full justify-self-center">Developed by Fujimune IT & Noé Nizou</p>
+                <div className="flex items-center justify-center gap-2.5 h-full bg">
+                    <Link className="h-[60%]" href="https://www.inrae.fr/" target="_blank" rel="noopener noreferrer">
+                        <Image src={"/inrae.webp"} alt="Logo de l'Institut National de Recherche pour l'Agriculture, l'Alimentation et l'Environnement" width={120} height={30} className="h-full w-auto dark:grayscale"/>
+                    </Link>
+                    <Link className="h-[80%]" href="https://www.surrey.ac.uk/" target="_blank" rel="noopener noreferrer">
+                        <Image src={"/surrey-university.webp"} alt="Logo de l'Université de Surrey en Angleterre" width={120} height={30} className="h-full w-auto dark:invert dark:grayscale" />
+                    </Link>
+                    
+                    
+                    
+                </div>
                 <div className="flex items-center gap-2.5 h-full">
-                    <p><b>Sponsored by</b></p>
-                    <div className="">
-                    <Image
-                        src={"/nestle-health-science.webp"}
-                        alt="Logo de Nestlé Health Science"
-                        width={120}
-                        height={30} 
-                        className="h-full w-auto" 
-                    />
-                    </div>
+                    <p>Sponsored by</p>
+                    <Link className="h-[80%]" href="https://www.nestlehealthscience.com/" target="_blank" rel="noopener norefferer">
+                    <Image src={"/nestle-health-science.webp"} alt="Logo de Nestlé Health Science" width={120} height={30} className="h-full w-auto dark:invert-100 dark:grayscale"/>
+                    </Link>
                 </div>
             </div>
 
+            <div className="flex-[1] flex justify-center items-center ">
 
+            </div>
 
             <div className="flex-[1] flex justify-center items-center">
-                <div>
-                    <Image src={"/fujimuneit.webp"} alt="Logo de Fujimune IT" width={220} height={59} className="h-full w-auto invert-100"/>
-                </div>
+                <Link href="https://fujimuneit.fr" target="_blank" rel="noopener norefferer">
+                    <Image src={"/fujimuneit.webp"} alt="Logo de Fujimune IT" width={220} height={59} className="h-full w-auto invert-100 dark:invert-0"/>
+                </Link>
             </div>
-
+            
+            <div className="flex-[1] flex flex-col justify-center items-end text-sm">
+                <p>Noé Nizou</p>
+                <a href="mailto:noe.nizou@gmail.com" className="underline">Contact</a>
+                <p className="text-gray-600 dark:text-gray-400 italic">Site web en cours de développement</p>
+            </div>
 
 
 
@@ -34,10 +47,10 @@ export default function Footer(){
 
                 <div className="flex items-center gap-x-4">
                     <Link href="https://threejs.org" target="_blank" rel="noopener noreferrer">
-                        <Image src="/threejs.webp" alt="Logo de TailwindCSS" width={120} height={120} className="h-6 w-auto mb-2"/>
+                        <Image src="/threejs.webp" alt="Logo de TailwindCSS" width={120} height={120} className="h-6 w-auto mb-2 dark:invert-100 "/>
                     </Link>
                     <Link href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer">
-                        <Image src="/tailwind.svg" alt="Logo de TailwindCSS" width={120} height={72} className="h-4 w-auto mb-2"/>
+                        <Image src="/tailwind.svg" alt="Logo de TailwindCSS" width={120} height={72} className="h-4 w-auto mb-2 dark:invert-100 dark:grayscale"/>
                     </Link>
                     
                     
@@ -47,10 +60,10 @@ export default function Footer(){
 
                 <div className="flex items-center gap-x-4">
                     <Link href="https://plotly.com/javascript/" target="_blank" rel="noopener noreferrer">
-                        <Image src="/plotly.webp" alt="Logo de Plotly.js" width={120} height={72} className="h-5 w-auto"/>
+                        <Image src="/plotly.webp" alt="Logo de Plotly.js" width={120} height={72} className="h-5 w-auto dark:invert-100 dark:grayscale"/>
                     </Link>
                     <Link href="https://nextjs.org" target="_blank" rel="noopener noreferrer">
-                        <Image src="/nextjs.webp" alt="Logo de Next.js" width={120} height={72} className="h-4 w-auto"/>
+                        <Image src="/nextjs.webp" alt="Logo de Next.js" width={120} height={72} className="h-4 w-auto dark:invert-100"/>
                     </Link>
                 </div>
             </div>

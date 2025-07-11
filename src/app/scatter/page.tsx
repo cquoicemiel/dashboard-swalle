@@ -51,6 +51,8 @@ export default async function ScatterPage() {
   return (
     <div className="h-dvh flex justify-center items-center">
       <ScatterWithLevels data={dataList} />
+      <div className="fixed top-[3.250rem] bottom-2.5 left-2.5 w-[25%] blur-bg rounded-sm pointer-events-none">
+      </div>
     </div>
   );
 }

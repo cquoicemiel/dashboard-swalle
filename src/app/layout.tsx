@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Footer from "@/components/layout/Footer";
 import SideBar from "@/components/layout/SideBar";
-import DarkMode from "@/components/layout/DarkMode";
+import DarkMode from "@/components/layout/ToggleDarkMode";
 
 
 const helvetica = localFont({
@@ -25,10 +25,10 @@ export default function RootLayout({
       <body
         className={`${helvetica.className} antialiased min-h-dvh`}
       >
+        <DarkMode/>
         {children}
         <Footer/>
         <SideBar/>
-        <DarkMode/>
       </body>
       
     </html>
