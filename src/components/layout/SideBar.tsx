@@ -10,19 +10,20 @@ export default function SideBar(){
 
     const tabs = [
         {
-            name: "🏠 Accueil / Dashboard",
+            name: "Accueil",
             link: "/"
         },
         {
-            name: "📊 Visualisation 3D",
+            name: "Visualisation 3D",
             link: "/visualisation-3d"
         },
         {
-            name: "🧪 Données expérimentales",
-            link: "/scatter"
+            name: "Déplacement du bolus dans le Pharynx",
+            link: "/niveaux-bolus"
         },
         {
-           
+          name: "Photos des mesures DIC",
+          link: "/photos-dic" 
         }
     ]
 
@@ -31,7 +32,7 @@ export default function SideBar(){
         <>
         <div onClick={() => toggleState(!state)} className="fixed top-2.5 left-2.5 z-10 h-8 w-8 p-1.5 blur-card cursor-pointer rounded-sm">
             <div className="relative h-full w-full">
-                <Image src={`${state? "/close.svg" : "/menu.svg"}`} alt="Bouton d'activation du menu latéral de navigation" fill className="dark:invert"/>
+                <Image src={`${state? "/close.svg" : "/menu.svg"}`} alt="Bouton d'activation du menu latéral de navigation" fill className="dark:invert select-none"/>
             </div>
         </div>  
         <div className={`blur-bg fixed top-[3.275rem] p-2.5 flex flex-col gap-2 rounded-sm left-2.5 z-20 w-[15vw] ${state? "" : "hidden pointer-events-none"}`}>

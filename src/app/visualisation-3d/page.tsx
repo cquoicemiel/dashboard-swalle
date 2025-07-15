@@ -1,17 +1,12 @@
-"use client"
-
 import ThreeScene from "@/components/threejs/ThreeScene";
-import { useEffect } from "react";
+import { Metadata } from "next";
+
+
+export const metadata: Metadata = {
+  title: "Visualisation en 3D"
+}
 
 export default function Visu3D(){
-
-    useEffect(() => {
-        document.body.style.overflow = "hidden";
-
-        return () => {
-        document.body.style.overflow = "auto";
-        };
-    }, []);
 
     return(
         // <div className="p-24 h-dvh w-full">

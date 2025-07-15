@@ -31,7 +31,7 @@ export default function ToggleDarkMode() {
   return (
     <div
       onClick={toggleTheme}
-      className="blur-card fixed cursor-pointer top-2.5 right-2.5 z-10 h-8 w-8 p-1 rounded-sm"
+      className="blur-card fixed cursor-pointer top-2.5 right-2.5 z-10 h-8 w-8 p-1 rounded-sm select-none"
     >
       {isDarkMode ? '🌞' : '🌖'}
     </div>

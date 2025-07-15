@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { usePathname } from 'next/navigation'
 // @ts-ignore
 import * as THREE from "three";
 // @ts-ignore
@@ -12,7 +13,15 @@ import GUI from "lil-gui";
 export default function ThreeScene() {
   const containerRef = useRef<HTMLDivElement>(null);
 
+  const pathname = usePathname()
+  console.log(pathname)
+
+
   useEffect(() => {
+   
+    
+    if (pathname == "/visualisation-3d") {document.body.style.overflow = "hidden";}
+
     if (!containerRef.current) return;
 
     const container = containerRef.current;
@@ -138,6 +147,7 @@ export default function ThreeScene() {
       gui.destroy();
       renderer.dispose();
       container.removeChild(renderer.domElement);
+      document.body.style.overflow = "auto";
     };
   }, []); // Le tableau de dépendances reste vide
 

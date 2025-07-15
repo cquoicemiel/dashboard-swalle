@@ -36,7 +36,7 @@ export default function ScatterWithLevels({data}: ScatterWithLevelsProps){
                 {/* {data? null : <div className="absolute top-1/2 left-1/2 translate-[-50%]">
                     Chargement des données...
                 </div>  } */}
-                <ScatterPlot data={data[level - 1]} title={`Scatter Plot 3D - Niveau ${level}`}/>
+                <ScatterPlot data={data[level - 1]} title={`Swall-E - Holo 3 - Niveau ${level}`}/>
             </div>
             <div className="absolute flex gap-2.5 justify-center items-center bottom-14 inset-x-0 z-50">
                 <div>1</div>
