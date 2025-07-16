@@ -86,7 +86,7 @@ export default function ScatterPlot({ data, title }: ScatterPlotProps) {
     if (theme === 'dark') {
       return {
         ...baseLayout,
-        template: 'plotly_dark' as any, // Applique le template sombre !
+        template: 'plotly_dark' as Plotly.Layout['template'], // Applique le template sombre !
         paper_bgcolor: 'rgba(0,0,0,0)', // Fond extérieur transparent
         plot_bgcolor: 'rgba(0,0,0,0)', // Fond du graphique transparent
         title: { ...baseLayout.title, font: { color: '#e5e7eb' } },
@@ -123,11 +123,10 @@ export default function ScatterPlot({ data, title }: ScatterPlotProps) {
         const plotDiv = plotRef.current as unknown as Plotly.PlotlyHTMLElement;
 
         plotDiv.on('plotly_relayout', (eventData: PlotRelayoutEvent) => {
-          const typedEventData = eventData as any;
-          if (typedEventData['scene.camera']) {
-            cameraRef.current = typedEventData['scene.camera'] as Camera;
-          }
-        });
+        if ('scene.camera' in eventData) {
+          cameraRef.current = eventData['scene.camera'] as Camera;
+        }
+      });
 
         return () => {
           if (plotDiv) {

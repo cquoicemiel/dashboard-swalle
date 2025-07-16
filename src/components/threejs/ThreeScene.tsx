@@ -2,11 +2,11 @@
 
 import { useEffect, useRef } from "react";
 import { usePathname } from 'next/navigation'
-//@ts-expect-error
+//@ts-expect-error: OrbitControls lacks Next.js types
 import * as THREE from "three";
-//@ts-expect-error
+//@ts-expect-error: OrbitControls lacks Next.js types
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-//@ts-expect-error
+//@ts-expect-error: OrbitControls lacks Next.js types
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import GUI from "lil-gui";
 
@@ -34,6 +34,7 @@ export default function ThreeScene() {
     // On ne définit plus la couleur ici, on le fera dynamiquement
     container.appendChild(renderer.domElement);
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const controls = new OrbitControls(camera, renderer.domElement);
     
     // ... (votre code pour GUI et GLTFLoader reste identique) ...
@@ -73,7 +74,7 @@ export default function ThreeScene() {
     //-----------------------------------------------------
 
     const loader = new GLTFLoader();
-    let modele: any;
+    let modele: THREE.Group | null;
     loader.load(
         '/swalle_conduit.glb', 
         function(gltf: any){
@@ -117,7 +118,7 @@ export default function ThreeScene() {
     scene.add( axesHelper );
 
     // ➡️ Fonction pour créer un label
-    function createLabel(text: any, color:any) {
+    function createLabel(text: string, color:THREE.ColorRepresentation) {
       const canvas = document.createElement('canvas');
       const size = 128; // taille de la texture
       canvas.width = size;
