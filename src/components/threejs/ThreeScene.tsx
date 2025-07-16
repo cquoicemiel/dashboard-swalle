@@ -7,7 +7,7 @@ import * as THREE from "three";
 //@ts-expect-error: OrbitControls lacks Next.js types
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 //@ts-expect-error: OrbitControls lacks Next.js types
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import { GLTFLoader, GLTF } from "three/examples/jsm/loaders/GLTFLoader.js";
 import GUI from "lil-gui";
 
 export default function ThreeScene() {
@@ -59,9 +59,9 @@ export default function ThreeScene() {
     };
 
     gui.add(params, "vitesse", 0, 0.03).name("Rotation");
-    gui.addColor(params, "couleur").name("Couleur").onChange((value: any) => {
+    gui.addColor(params, "couleur").name("Couleur").onChange((value: THREE.ColorRepresentation) => {
       if (modele) {
-        modele.traverse((child: any) => {
+        modele.traverse((child: THREE.Object3D) => {
           if (child.isMesh && child.material) {
             (child.material as THREE.MeshStandardMaterial).color.set(value);
             child.material.metalness = 0.7;
@@ -77,13 +77,13 @@ export default function ThreeScene() {
     let modele: THREE.Group | null;
     loader.load(
         '/swalle_conduit.glb', 
-        function(gltf: any){
+        function(gltf: GLTF){
             modele = gltf.scene
             modele.scale.set(0.05, 0.05, 0.05)
             modele.position.set(0, 0, 0)
             modele.rotation.x = Math.PI / 2
             modele.rotation.z = Math.PI
-            modele.traverse((child: any) => {
+            modele.traverse((child: THREE.Mesh) => {
               if (child.isMesh && child.material) {
                 child.material.color.set(0x6b6b6b);
                 child.material.metalness = 0.7;
@@ -92,14 +92,14 @@ export default function ThreeScene() {
         });
             scene.add(modele)
         },
-        function (xhr: any) {
+        function (xhr: ProgressEvent<EventTarget>) {
             if (xhr.total && xhr.total > 0) {
                 console.log(((xhr.loaded / xhr.total) * 100).toFixed(2) + "% loaded");
             } else {
                 console.log(xhr.loaded/1000000 + " MB loaded");
             }
         },
-        function(error: any){
+        function(){
             console.error('erreur lors du chargement du conduit de Swall-E')
         }
     )
