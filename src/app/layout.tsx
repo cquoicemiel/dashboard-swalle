@@ -7,7 +7,7 @@ import DarkMode from "@/components/layout/ToggleDarkMode";
 
 
 const helvetica = localFont({
-  src: './assets/Helvetica.ttf'
+  src: './assets/fonts/Helvetica.ttf'
 })
 
 export const metadata: Metadata = {

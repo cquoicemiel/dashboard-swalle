@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Footer(){
     return(
-        <footer className={"relative border-foreground border-t h-24 w-full flex p-2"}>
+        <footer className={"relative border-foreground border-t h-24 w-full flex py-2 px-4"}>
             <div className="flex-[1] relative flex flex-col items-start justify-center gap-1">
                 <div className="flex items-center justify-center gap-2.5 h-full bg">
                     <Link className="h-[60%]" href="https://www.inrae.fr/" target="_blank" rel="noopener noreferrer">

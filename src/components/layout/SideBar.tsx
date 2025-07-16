@@ -1,12 +1,39 @@
 "use client"
 
 import Image from "next/image"
-import { useState } from "react"
+import { useState, useEffect, useRef} from "react"
 import SideBarTab from "./SideBarTab"
+
+
 
 export default function SideBar(){
 
-    const [state, toggleState] = useState(false)
+    // const ref = useRef<HTMLDivElement>(null);
+    
+    const [isOpen, setIsOpen] = useState<boolean>(false)
+
+
+    // useEffect(() => {
+    //     const handleOutsideClick = (event: any) => {
+    //         if(
+    //             isOpen &&                             // si ouvert
+    //             ref.current &&                         // si ref existe
+    //             !ref.current.contains(event.target as Node) && // si click dehors
+    //             !(event.target as HTMLElement).closest(".sidebar-toggle") // pas le bouton
+    //         )
+    //             {
+    //             setIsOpen(false)
+    //         }
+    //     }
+
+
+    //     document.addEventListener("mousedown", handleOutsideClick, { capture: true });
+
+    //     return () => {
+    //         document.removeEventListener("mousedown", handleOutsideClick)
+    //     }
+    // }, [ref])
+    
 
     const tabs = [
         {
@@ -18,7 +45,7 @@ export default function SideBar(){
             link: "/visualisation-3d"
         },
         {
-            name: "Déplacement du bolus dans le Pharynx",
+            name: "Déplacement du bolus dans le pharynx",
             link: "/niveaux-bolus"
         },
         {
@@ -30,15 +57,15 @@ export default function SideBar(){
 
     return(
         <>
-        <div onClick={() => toggleState(!state)} className="fixed top-2.5 left-2.5 z-10 h-8 w-8 p-1.5 blur-card cursor-pointer rounded-sm">
+        <div onClick={() => setIsOpen(!isOpen)} className="sidebar-toggle fixed top-2.5 left-2.5 z-30 h-8 w-8 p-1.5 blur-card cursor-pointer rounded-sm">
             <div className="relative h-full w-full">
-                <Image src={`${state? "/close.svg" : "/menu.svg"}`} alt="Bouton d'activation du menu latéral de navigation" fill className="dark:invert select-none"/>
+                <Image src={`${isOpen? "/close.svg" : "/menu.svg"}`} alt="Bouton d'activation du menu latéral de navigation" fill className="dark:invert select-none"/>
             </div>
         </div>  
-        <div className={`blur-bg fixed top-[3.275rem] p-2.5 flex flex-col gap-2 rounded-sm left-2.5 z-20 w-[15vw] ${state? "" : "hidden pointer-events-none"}`}>
+        <div className={`blur-bg fixed top-[3.275rem] p-2.5 flex flex-col gap-2 rounded-sm left-2.5 z-30 w-[17vw] ${isOpen? "" : "hidden pointer-events-none"}`}>
 
         {tabs.map((e) => {
-            return (e.link? <SideBarTab key={e.name} name={e.name} url={e.link} toggle={toggleState}/>
+            return (e.link? <SideBarTab key={e.name} name={e.name} url={e.link} setter={setIsOpen}/>
             : null)
         })}
 

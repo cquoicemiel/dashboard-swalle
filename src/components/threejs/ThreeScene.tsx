@@ -108,17 +108,13 @@ export default function ThreeScene() {
     scene.add(camera);
     //---------------------------------
     
-    // 🎨 NOUVEAU : Fonction pour mettre à jour la couleur de fond
     const updateBackgroundColor = () => {
-      // On vérifie si la classe 'dark' est présente sur l'élément <html>
       const isDarkMode = document.documentElement.classList.contains('dark');
-      const lightColor = new THREE.Color(0xffffff); // Blanc
-      const darkColor = new THREE.Color(0x0a0a0a);  // Votre couleur de fond sombre
-      
+      const lightColor = new THREE.Color(0xededed); 
+      const darkColor = new THREE.Color(0x0f0f0f);  
       renderer.setClearColor(isDarkMode ? darkColor : lightColor);
     };
 
-    // 👁️ NOUVEAU : Création de l'observateur de DOM
     const observer = new MutationObserver((mutations) => {
       for (const mutation of mutations) {
         if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
@@ -126,11 +122,9 @@ export default function ThreeScene() {
         }
       }
     });
-
-    // On lance l'observation sur la balise <html>
     observer.observe(document.documentElement, { attributes: true });
 
-    // On appelle la fonction une première fois au chargement pour avoir la bonne couleur initiale
+    // appel initial
     updateBackgroundColor();
 
     const animate = () => {
@@ -141,15 +135,14 @@ export default function ThreeScene() {
     };
     renderer.setAnimationLoop(animate);
 
-    return () => { // Nettoyage de la scène
-      // 🧹 NOUVEAU : Arrêter l'observation pour éviter les fuites de mémoire
+    return () => {
       observer.disconnect();
       gui.destroy();
       renderer.dispose();
       container.removeChild(renderer.domElement);
       document.body.style.overflow = "auto";
     };
-  }, []); // Le tableau de dépendances reste vide
+  }, []);
 
   return (
     <div

@@ -15,9 +15,9 @@ export default function IntegrationCard({path, src, title, alt}: IntegrationCard
     return(
         <Link href={path} target="_self" className="blur-integration flex items-center justify-center relative rounded-sm  overflow-hidden">
               <div className="h-full">
-                <Image  src={src} height={600} width={600} alt={alt} className="hidden block w-full h-full transition-transform duration-200 ease-in-out hover:scale-110 select-none"/>
+                <Image  src={src} height={600} width={600} alt={alt} className="hidden w-full h-full transition-transform duration-200 ease-in-out hover:scale-110 select-none"/>
               </div>
-              <div className="absolute bottom-2 w-full h-[20%] flex items-center justify-center px-4">
+              <div className="absolute bottom-4 w-full h-[25%] flex items-center justify-center px-4 md:text-sm">
                 <p className=" text-center">{title}</p>
               </div>
         </Link>

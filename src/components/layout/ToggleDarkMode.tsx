@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 export default function ToggleDarkMode() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -31,9 +32,9 @@ export default function ToggleDarkMode() {
   return (
     <div
       onClick={toggleTheme}
-      className="blur-card fixed cursor-pointer top-2.5 right-2.5 z-10 h-8 w-8 p-1 rounded-sm select-none"
+      className="blur-card fixed cursor-pointer top-2.5 right-2.5 z-30 h-8 w-8 p-1 rounded-sm select-none flex items-center justify-center"
     >
-      {isDarkMode ? '🌞' : '🌖'}
+      <Image height={18} width={18} src={`${isDarkMode ? "/light_mode.png" : "/dark_mode.png"}`} alt={`Button pour activer le ${isDarkMode ? "mode clair" : "mode sombre"}`}/>
     </div>
   );
 }
