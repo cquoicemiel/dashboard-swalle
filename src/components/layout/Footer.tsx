@@ -6,22 +6,16 @@ export default function Footer(){
     return(
         <footer className={"relative border-foreground border-t h-24 w-full flex py-2 px-4"}>
             <div className="flex-[1] relative flex flex-col items-start justify-center gap-1">
-                <div className="flex items-center justify-center gap-2.5 h-full bg">
-                    <Link className="h-[60%]" href="https://www.inrae.fr/" target="_blank" rel="noopener noreferrer">
-                        <Image src={"/inrae.webp"} alt="Logo de l'Institut National de Recherche pour l'Agriculture, l'Alimentation et l'Environnement" width={120} height={30} className="h-full w-auto dark:grayscale"/>
-                    </Link>
-                    <Link className="h-[80%]" href="https://www.surrey.ac.uk/" target="_blank" rel="noopener noreferrer">
-                        <Image src={"/surrey-university.webp"} alt="Logo de l'Université de Surrey en Angleterre" width={120} height={30} className="h-full w-auto dark:invert dark:grayscale" />
-                    </Link>
+                <div className="flex flex-col py-4 items-left justify-center gap-2.5 h-full bg">
+                                    
                     
-                    
-                    
-                </div>
-                <div className="flex items-center gap-2.5 h-full">
-                    <p>Sponsored by</p>
                     <Link className="h-[80%]" href="https://www.nestlehealthscience.com/" target="_blank" rel="noopener norefferer">
-                    <Image src={"/nestle-health-science.webp"} alt="Logo de Nestlé Health Science" width={120} height={30} className="h-full w-auto dark:invert-100 dark:grayscale"/>
+                    <Image src={"/unistra.png"} alt="Logo de Nestlé Health Science" width={120} height={30} className="h-full w-auto dark:invert-100 dark:grayscale"/>
                     </Link>
+                    
+                    <Link className="h-[80%]" href="https://www.surrey.ac.uk/" target="_blank" rel="noopener noreferrer">
+                        <Image src={"/inserm.png"} alt="Logo de l'Université de Surrey en Angleterre" width={120} height={30} className="h-full w-auto dark:invert dark:grayscale" />
+                    </Link> 
                 </div>
             </div>
 

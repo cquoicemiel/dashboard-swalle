@@ -27,7 +27,7 @@ export default function ThreeScene() {
     const container = containerRef.current;
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(55, container.clientWidth / container.clientHeight, 0.1, 1000);
-    camera.position.z = 10;
+    camera.position.set(10.525, 4, 6);
 
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize(container.clientWidth, container.clientHeight);
@@ -51,6 +51,10 @@ export default function ThreeScene() {
     const params = {
       vitesse: 0.00,
       couleur: 0x6b6b6b,
+      resetRotation: function() {
+        modele.rotation.x = Math.PI / 2
+        modele.rotation.z = Math.PI
+          }
     };
 
     gui.add(params, "vitesse", 0, 0.03).name("Rotation");
@@ -65,6 +69,7 @@ export default function ThreeScene() {
         });
       }
     });
+    gui.add(params,  "resetRotation").name("Reset la rotation");
     //-----------------------------------------------------
 
     const loader = new GLTFLoader();
@@ -75,8 +80,8 @@ export default function ThreeScene() {
             modele = gltf.scene
             modele.scale.set(0.05, 0.05, 0.05)
             modele.position.set(0, 0, 0)
-            modele.rotation.z += Math.PI /5
-            modele.rotation.x += Math.PI /2
+            modele.rotation.x = Math.PI / 2
+            modele.rotation.z = Math.PI
             modele.traverse((child: any) => {
               if (child.isMesh && child.material) {
                 child.material.color.set(0x6b6b6b);
@@ -106,8 +111,48 @@ export default function ThreeScene() {
     povLight.position.set(0, 0, 0); // relative à la caméra
     camera.add(povLight);
     scene.add(camera);
-    //---------------------------------
+    // AXES X Y Z ---------------------------------
     
+    const axesHelper = new THREE.AxesHelper( 5 );
+    scene.add( axesHelper );
+
+    // ➡️ Fonction pour créer un label
+    function createLabel(text: any, color:any) {
+      const canvas = document.createElement('canvas');
+      const size = 128; // taille de la texture
+      canvas.width = size;
+      canvas.height = size;
+
+      const context = canvas.getContext('2d')!;
+      context.font = '48px Arial';
+      context.fillStyle = color;
+      context.textAlign = 'center';
+      context.textBaseline = 'middle';
+      context.fillText(text, size / 2, size / 2);
+
+      const texture = new THREE.CanvasTexture(canvas);
+      const material = new THREE.SpriteMaterial({ map: texture, transparent: true });
+      const sprite = new THREE.Sprite(material);
+      sprite.scale.set(0.5, 0.5, 0.5); // taille du label
+      return sprite;
+    }
+
+    // ➡️ Labels pour chaque axe
+    const labelX = createLabel('X', 'red');
+    labelX.position.set(5.5, 0, 0);
+    scene.add(labelX);
+
+    const labelY = createLabel('Y', 'green');
+    labelY.position.set(0, 5.5, 0);
+    scene.add(labelY);
+
+    const labelZ = createLabel('Z', 'blue');
+    labelZ.position.set(0, 0, 5.5);
+    scene.add(labelZ);
+
+
+    // -------------
+
     const updateBackgroundColor = () => {
       const isDarkMode = document.documentElement.classList.contains('dark');
       const lightColor = new THREE.Color(0xededed); 
