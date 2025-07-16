@@ -9,12 +9,12 @@ export default function Footer(){
                 <div className="flex flex-col py-4 items-left justify-center gap-2.5 h-full bg">
                                     
                     
-                    <Link className="h-[80%]" href="https://www.nestlehealthscience.com/" target="_blank" rel="noopener norefferer">
-                    <Image src={"/unistra.png"} alt="Logo de Nestlé Health Science" width={120} height={30} className="h-full w-auto dark:invert-100 dark:grayscale"/>
+                    <Link className="h-[80%]" href="https://unistra.fr" target="_blank" rel="noopener norefferer">
+                    <Image src={"/unistra.png"} alt="Logo de l'Université de Strasbourg" width={120} height={30} className="h-full w-auto dark:invert-100 dark:grayscale"/>
                     </Link>
                     
-                    <Link className="h-[80%]" href="https://www.surrey.ac.uk/" target="_blank" rel="noopener noreferrer">
-                        <Image src={"/inserm.png"} alt="Logo de l'Université de Surrey en Angleterre" width={120} height={30} className="h-full w-auto dark:invert dark:grayscale" />
+                    <Link className="h-[80%]" href="https://www.inserm.fr/" target="_blank" rel="noopener noreferrer">
+                        <Image src={"/inserm.png"} alt="Logo de l'INSERM" width={120} height={30} className="h-full w-auto dark:invert dark:grayscale" />
                     </Link> 
                 </div>
             </div>
