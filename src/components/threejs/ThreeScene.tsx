@@ -2,11 +2,11 @@
 
 import { useEffect, useRef } from "react";
 import { usePathname } from 'next/navigation'
-// @ts-ignore
+//@ts-expect-error
 import * as THREE from "three";
-// @ts-ignore
+//@ts-expect-error
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-// @ts-ignore
+//@ts-expect-error
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import GUI from "lil-gui";
 
@@ -69,7 +69,7 @@ export default function ThreeScene() {
         });
       }
     });
-    gui.add(params,  "resetRotation").name("Reset la rotation");
+    gui.add(params,  "resetRotation").name("Réinitialiser la rotation");
     //-----------------------------------------------------
 
     const loader = new GLTFLoader();
@@ -187,7 +187,7 @@ export default function ThreeScene() {
       container.removeChild(renderer.domElement);
       document.body.style.overflow = "auto";
     };
-  }, []);
+  });
 
   return (
     <div

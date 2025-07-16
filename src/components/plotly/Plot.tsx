@@ -1,7 +1,6 @@
 "use client";
 
 import React, {useEffect, useRef} from "react";
-// @ts-ignore
 import Plotly from "plotly.js-dist-min";
 
 type PlotProps = {

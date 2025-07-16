@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { useState, useEffect, useRef} from "react"
+import { useState} from "react"
 import SideBarTab from "./SideBarTab"
 
 
