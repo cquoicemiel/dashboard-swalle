@@ -155,10 +155,10 @@ export default function ScatterPlot({ data, title }: ScatterPlotProps) {
 
 
   const DEFAULT_CAMERA_MOBILE: Partial<Camera> = {
-  eye: { x: 5, y: 5, z: 5 }, // position de départ reculée
+  eye: { x: 3, y: 3, z: 3 }, // position de départ reculée
   };
   const DEFAULT_CAMERA: Partial<Camera> = {
-  eye: { x: 2.7, y: 2.7, z: 2.7 }, // position de départ reculée
+  eye: { x: 3, y: 3, z: 3 }, // position de départ reculée
   };
 
   

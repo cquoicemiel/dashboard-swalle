@@ -58,7 +58,7 @@ export default async function ScatterPage() {
   }
 
   return (
-    <div className="h-[200vh] sm:h-[100vh] flex flex-col justify-center items-center">
+    <div className="h-[200svh] sm:h-[100vh] flex flex-col justify-center items-center">
       <ScatterWithLevels data={dataList} />
       <div className="block relative sm:hidden h-full w-full p-4 whitespace-pre-line overflow-y-auto">
           Cette visualisation 3D représente la modélisation du mouvement du bolus au sein du dispositif Swall‑E, un simulateur robotique de la déglutition humaine <i>in vitro</i>.

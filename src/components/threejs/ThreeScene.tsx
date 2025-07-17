@@ -162,7 +162,7 @@ export default function ThreeScene() {
 
     const updateBackgroundColor = () => {
       const isDarkMode = document.documentElement.classList.contains('dark');
-      const lightColor = new THREE.Color(0xededed); 
+      const lightColor = new THREE.Color(0xfdfdfd); 
       const darkColor = new THREE.Color(0x0f0f0f);  
       renderer.setClearColor(isDarkMode ? darkColor : lightColor);
     };
