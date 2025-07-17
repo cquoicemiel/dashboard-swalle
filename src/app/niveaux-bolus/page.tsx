@@ -1,5 +1,7 @@
 import ScatterWithLevels from "@/components/plotly/ScatterWithLevels";
 import { Metadata } from "next";
+import { promises as fs } from "fs";
+import path from "path";
 
 export const metadata: Metadata = {
   title: "Visualisation des niveaux de Bolus"
@@ -13,15 +15,17 @@ type ScatterPlotData = {
 };
 
 async function fetchPage(i: number): Promise<string> {
-  const res = await fetch(`https://fujimuneit.fr/Swall-E/HOLO3/Niveau-${i}.txt`, {
-    headers: {
-      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
-      Accept: "text/plain",
-    },
-    cache: "no-store",
-  });
-  if (!res.ok) throw new Error(`Erreur fetch Niveau-${i}`);
-  return res.text();
+  // const res = await fetch(`/niveaux/Niveau-${i}.txt`, {
+  //   headers: {
+  //     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+  //     Accept: "text/plain",
+  //   },
+  //   cache: "no-store",
+  // });
+  // if (!res.ok) throw new Error(`Erreur fetch Niveau-${i}`);
+  // return res.text();
+  const filePath = path.join(process.cwd(), "public", "niveaux", `Niveau-${i}.txt`);
+  return await fs.readFile(filePath, "utf-8");
 }
 
 function sliceData(text: string): string[] {
@@ -54,9 +58,18 @@ export default async function ScatterPage() {
   }
 
   return (
-    <div className="h-dvh flex justify-center items-center">
+    <div className="h-[200vh] sm:h-[100vh] flex flex-col justify-center items-center">
       <ScatterWithLevels data={dataList} />
-      <div className="fixed top-[3.250rem] bottom-2.5 left-2.5 w-[25%] blur-bg overflow-y-hidden pointer-events-none rounded-sm whitespace-pre-line p-4">
+      <div className="block relative sm:hidden h-full w-full p-4 whitespace-pre-line overflow-y-auto">
+          Cette visualisation 3D représente la modélisation du mouvement du bolus au sein du dispositif Swall‑E, un simulateur robotique de la déglutition humaine <i>in vitro</i>.
+          <br/>
+          <br/>
+          &nbsp;- Les données proviennent de 18 niveaux successifs capturés lors des expérimentations, chacun correspondant à une étape temporelle différente du passage du bolus dans l’oropharynx artificiel.  
+          <br/>
+          <br/>
+          &nbsp;- Les axes représentent les coordonnées spatiales (X, Y, Z en mm) au sein du modèle 3D, et la couleur des points indique les variations de déplacement local (ΔZ, ici DZ).
+      </div>
+      <div className="hidden sm:block sm:fixed top-[3.250rem] bottom-2.5 left-2.5 w-[25%] blur-bg overflow-y-auto pointer-events-none rounded-sm whitespace-pre-line p-4">
 
         Cette visualisation 3D représente la modélisation du mouvement du bolus au sein du dispositif Swall‑E, un simulateur robotique de la déglutition humaine <i>in vitro</i>.
         <br/>

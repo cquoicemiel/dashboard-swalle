@@ -1,16 +1,16 @@
 import IntegrationCard from "@/components/home/IntegrationCard";
-import Grid from "@/components/plotly/Grid";
+import Grid from "@/components/home/Grid";
 import ThreeScene from "@/components/threejs/ThreeScene";
 
 export default function Home() {
   return (
     <>
-    <div className="h-dvh w-full flex border-b border-foreground z-30">
-      <div className="flex-[5] border-foreground relative">
+    <div className="h-[150vh] sm:h-dvh w-full flex flex-col sm:flex-row border-b border-foreground z-30 pt-[3.25rem] sm:pt-0">
+      <div className="flex-[1] sm:flex-[5] border-foreground border-b sm:border-none relative">
         <h1 className="font-bold text-2xl fixed z-30 top-2.5 left-[3.875rem]">Dashboard Swall-E</h1>
         <ThreeScene/>
       </div>
-      <div className="flex-[3] border-l border-foreground box-border overflow-y-auto flex flex-col">
+      <div className="flex-[1] sm:flex-[3] sm:border-l border-foreground box-border overflow-y-auto flex flex-col">
         <h2 className="text-xl font-bold pl-4 pt-2.5">Intégrations dynamiques</h2>
         <div className=" flex-1 overflow-y-auto">
           <Grid r={3} c={2}>
@@ -25,9 +25,12 @@ export default function Home() {
         </div>
         
       </div>
+      <div className="fixed z-20 top-0 inset-x-0 block sm:hidden h-[3.25rem] bg-[#f7f7f7] dark:bg-[#050505]">
+        {/* barr de fond format mobile */}
+      </div>
     </div>
     <div className="min-h-dvh  z-10">
-      <div className="sticky z-20 top-0 inset-x-0 h-[3.25rem] bg-[#f7f7f7] dark:bg-[#050505]">
+      <div className="hidden sm:block sticky z-20 top-0 inset-x-0 h-[3.25rem] bg-[#f7f7f7] dark:bg-[#050505]">
       {/* barre de fond sticky */}
       </div>
       <div className="p-6">

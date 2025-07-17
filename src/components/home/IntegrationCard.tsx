@@ -17,7 +17,7 @@ export default function IntegrationCard({path, src, title, alt}: IntegrationCard
               <div className="h-full">
                 <Image  src={src} height={600} width={600} alt={alt} className="hidden w-full h-full transition-transform duration-200 ease-in-out hover:scale-110 select-none"/>
               </div>
-              <div className="absolute bottom-4 w-full h-[25%] flex items-center justify-center px-4 md:text-sm">
+              <div className="absolute inset-0 sm:inset-auto sm:bottom-4 w-full sm:h-[25%] flex items-center justify-center px-4 md:text-sm">
                 <p className=" text-center">{title}</p>
               </div>
         </Link>

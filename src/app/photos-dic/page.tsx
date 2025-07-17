@@ -34,8 +34,8 @@ export default function PhotosDIC(){
 
 
     return(
-        <div className="h-screen w-full flex pt-[3.25rem]">
-            <h1 className="absolute top-2.5 left-[50%] translate-x-[-50%] text-xl font-bold">Installation pour les photos de DIC</h1>
+        <div className="h-screen w-full flex flex-col sm:flex-row pt-[3.25rem]">
+            <h1 className="absolute top-2.5 left-[50%] translate-x-[-50%] text-xl text-center font-bold">Photos setup DIC</h1>
             <div className="flex-[2] h-full border-foreground border-t overflow-y-auto will-change-scroll">
               <div
                 className="grid gap-8 p-4"
@@ -56,9 +56,9 @@ export default function PhotosDIC(){
                 ))}
               </div>
             </div>
-            <div className="flex-[1] top-[3.25rem] h-full blur-bg rounded-sm pointer-events-none whitespace-pre-line p-4 flex flex-col gap-8">
+            <div className="flex-[2] sm:flex-[1] top-[3.25rem] h-full blur-bg rounded-sm pointer-events-none whitespace-pre-line p-4 flex flex-col gap-8">
                 <div className="flex-[2] relative">
-                  {activePath? <Image src={activePath} alt="Image affichée en détails" fill className="object-contain"/> : null}
+                  {activePath? <Image src={activePath} alt="Image affichée en détails" fill className="object-contain"/> : <div className="text-center h-full w-full flex items-center justify-center">Cliquez sur une image pour l'afficher ici en grand</div>}
                 </div>
                 <div className="flex-[1] relative flex items-start">
                   <p>{activePath ? desc[parseInt(activePath.split("photo_DIC_setup")[1], 10)] : null}</p>

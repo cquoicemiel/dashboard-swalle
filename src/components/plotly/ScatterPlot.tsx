@@ -22,6 +22,7 @@ export default function ScatterPlot({ data, title }: ScatterPlotProps) {
   const [plotlyInitialized, setPlotlyInitialized] = useState(false);
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
 
+  
   useEffect(() => {
     const checkTheme = () => {
       const isDarkMode = document.documentElement.classList.contains('dark');
@@ -37,6 +38,7 @@ export default function ScatterPlot({ data, title }: ScatterPlotProps) {
 
 
   const trace = useMemo((): Partial<Plotly.Data> => {
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 640; // Tailwind breakpoint sm
     const baseTrace: Partial<Plotly.Data> = {
       x: data.X,
       y: data.Y,
@@ -51,6 +53,9 @@ export default function ScatterPlot({ data, title }: ScatterPlotProps) {
           title: {
             text: 'DZ(mm)',
           },
+          orientation: isMobile ? "h" : "v",
+          thickness: isMobile ? 10 : 20, 
+          xpad: isMobile ? 5 : 10,
         },
       },
     };
@@ -74,8 +79,14 @@ export default function ScatterPlot({ data, title }: ScatterPlotProps) {
 
 
   const layout = useMemo((): Partial<Plotly.Layout> => {
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 640; // Tailwind breakpoint sm
     const baseLayout: Partial<Plotly.Layout> = {
-      title: { text: title || "Scatter Plot 3D" },
+      title: { 
+        text: title || "Scatter Plot 3D",
+        y: 0.95
+      },
+      margin: isMobile ? { l: 0, r: 0, t: 10, b: 10 }
+                      : { l: 20, r: 20, t: 30, b: 30 },
       scene: {
         xaxis: { title: { text: "X0 (mm)" } },
         yaxis: { title: { text: "Y0 (mm)" } },
@@ -89,7 +100,10 @@ export default function ScatterPlot({ data, title }: ScatterPlotProps) {
         template: 'plotly_dark' as Plotly.Layout['template'], // Applique le template sombre !
         paper_bgcolor: 'rgba(0,0,0,0)', // Fond extérieur transparent
         plot_bgcolor: 'rgba(0,0,0,0)', // Fond du graphique transparent
-        title: { ...baseLayout.title, font: { color: '#e5e7eb' } },
+        title: {
+            ...baseLayout.title,
+            font: { color: '#e5e7eb' } 
+          },
         scene: {
           ...baseLayout.scene,
           xaxis: { ...baseLayout.scene?.xaxis, gridcolor: '#4b5563', title: {text: "X0 (mm)", font: { color: '#e5e7eb' } }, tickfont: {color: '#d1d5db'} },
@@ -138,20 +152,37 @@ export default function ScatterPlot({ data, title }: ScatterPlotProps) {
     initPlotly();
   }, [plotlyInitialized, trace, layout]);
 
+
+
+  const DEFAULT_CAMERA_MOBILE: Partial<Camera> = {
+  eye: { x: 5, y: 5, z: 5 }, // position de départ reculée
+  };
+  const DEFAULT_CAMERA: Partial<Camera> = {
+  eye: { x: 2.7, y: 2.7, z: 2.7 }, // position de départ reculée
+  };
+
+  
   useEffect(() => {
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 640; // Tailwind breakpoint sm
     async function updatePlot() {
       const Plotly = (await import("plotly.js-dist-min")).default;
       if (plotRef.current && plotlyInitialized) {
         const currentPlotDiv = plotRef.current as unknown as Plotly.PlotlyHTMLElement;
         const currentLayout = { ...layout };
 
-        // FIX: Check if cameraRef.current is not null before using it
+        // check si cameraRef.current est pas null pour le use
+        
         if (cameraRef.current) {
-          currentLayout.scene = {
-            ...currentLayout.scene,
-            camera: cameraRef.current,
-          };
-        }
+        currentLayout.scene = {
+          ...currentLayout.scene,
+          camera: cameraRef.current, // conserve la caméra actuelle
+        };
+        } else {
+        currentLayout.scene = {
+          ...currentLayout.scene,
+          camera: isMobile ? DEFAULT_CAMERA_MOBILE : DEFAULT_CAMERA, // utilise la position par défaut au premier rendu
+  };
+}
 
         Plotly.react(currentPlotDiv, [trace], currentLayout);
       }

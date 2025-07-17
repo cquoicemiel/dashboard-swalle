@@ -55,6 +55,13 @@ html.dark * {
   scrollbar-color: #555 #2d2d2d;
 }
 
+html:not(.dark) .lil-gui.root {
+  --title-background-color: #ffffff; 
+  --title-text-color: var(--color-foreground);       
+  --background-color: #ffffff;
+  --text-color: var(--color-foreground);
+  --widget-color: var(--color-background);
+}
 
 @theme inline {
   --color-background: var(--background);

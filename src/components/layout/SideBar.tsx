@@ -62,7 +62,7 @@ export default function SideBar(){
                 <Image src={`${isOpen? "/close.svg" : "/menu.svg"}`} alt="Bouton d'activation du menu latéral de navigation" fill className="dark:invert select-none"/>
             </div>
         </div>  
-        <div className={`blur-bg fixed top-[3.275rem] p-2.5 flex flex-col gap-2 rounded-sm left-2.5 z-30 w-[17vw] ${isOpen? "" : "hidden pointer-events-none"}`}>
+        <div className={`blur-bg fixed p-2.5 pt-[3.275rem]  flex flex-col gap-2 rounded-sm inset-0 z-20 w-full sm:w-[15vw] sm:left-2.5 sm:right-auto sm:bottom-auto sm:top-[3.275rem] sm:p-2.5  ${isOpen? "" : "hidden pointer-events-none"}`}>
 
         {tabs.map((e) => {
             return (e.link? <SideBarTab key={e.name} name={e.name} url={e.link} setter={setIsOpen}/>

@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Footer(){
     return(
-        <footer className={"relative border-foreground border-t h-24 w-full flex py-2 px-4"}>
+        <footer className={"relative border-foreground border-t h-24 w-full flex py-2 px-4 gap-4 sm:gap-0"}>
             <div className="flex-[1] relative flex flex-col items-start justify-center gap-1">
                 <div className="flex flex-col py-4 items-left justify-center gap-2.5 h-full bg">
                                     
@@ -19,7 +19,7 @@ export default function Footer(){
                 </div>
             </div>
 
-            <div className="flex-[1] flex justify-center items-center ">
+            <div className="flex-[1] justify-center items-center hidden sm:flex">
 
             </div>
 
@@ -29,15 +29,15 @@ export default function Footer(){
                 </Link>
             </div>
             
-            <div className="flex-[1] flex flex-col justify-center items-end text-sm">
-                <p>Noé Nizou</p>
+            <div className="flex-[1] flex flex-col justify-center items-end text-xs sm:text-sm">
+                <p className="">Noé Nizou</p>
                 <a href="mailto:noe.nizou@gmail.com" className="underline">Contact</a>
-                <p className="text-gray-600 dark:text-gray-400 italic">Site web en cours de développement</p>
+                <p className="text-gray-600 dark:text-gray-400 italic text-right">Site web en cours de développement</p>
             </div>
 
 
 
-            <div className="flex-[1] flex flex-col items-end justify-center h-full p-2">
+            <div className="flex-[1] flex-col items-end justify-center h-full p-2 hidden sm:flex">
 
                 <div className="flex items-center gap-x-4">
                     <Link href="https://threejs.org" target="_blank" rel="noopener noreferrer">

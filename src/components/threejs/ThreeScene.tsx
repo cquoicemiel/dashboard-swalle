@@ -42,6 +42,12 @@ export default function ThreeScene() {
     const gui = new GUI({ autoPlace: false });
     container.appendChild(gui.domElement);
 
+    if (window.innerWidth < 640) { // breakpoint Tailwind pour sm
+      gui.close(); // ferme le GUI sur mobile
+    } else {
+      gui.open(); // garde ouvert sur PC
+    }
+
     Object.assign(gui.domElement.style, {
         position: "absolute",
         top: "0",

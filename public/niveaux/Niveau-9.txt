@@ -1,20 +1,20 @@
 Date : 2024/09/17 16:56:10
 Nom du projet : Pharynx-silicone-H3-2
 Emplacement du projet : P:\Projets_2024\COSSE\Pharynx-silicone-H3-2\
-Légende : 
-	Niveau de référence : 0
+Lï¿½gende : 
+	Niveau de rï¿½fï¿½rence : 0
 	Niveau courant : 9
-	Paramètres Q4 : 
-		Taille d'un élément : 64
-		Nombre maximum d'itérations : 5
+	Paramï¿½tres Q4 : 
+		Taille d'un ï¿½lï¿½ment : 64
+		Nombre maximum d'itï¿½rations : 5
 		Seuil de convergence : 0.001
 Commentaires utilisateurs : 
-	Opérateur : 
+	Opï¿½rateur : 
 	Lieu : 
 	Date : 
-	Distance Caméras : 
-	Angle caméras : 
-	Distance du Capteur à l'objet : 
+	Distance Camï¿½ras : 
+	Angle camï¿½ras : 
+	Distance du Capteur ï¿½ l'objet : 
 
 X(px)	Y(px)	X0(mm)	Y0(mm)	Z0(mm)	DX(mm)	DY(mm)	DZ(mm)	
 1283.00	33.00	0.02	38.44	-11.74	0.63	-0.04	1.24	
@@ -166,7 +166,6 @@ X(px)	Y(px)	X0(mm)	Y0(mm)	Z0(mm)	DX(mm)	DY(mm)	DZ(mm)
 1661.00	663.00	15.37	12.70	-1.90	0.65	-0.25	0.45	
 1724.00	663.00	18.28	12.43	-4.79	0.59	-0.23	0.38	
 1787.00	663.00	21.27	12.20	-7.51	0.56	-0.20	0.32	
-1850.00	663.00	24.40	11.92	-10.51	0.53	-0.18	0.32	
 968.00	726.00	-12.91	9.99	-2.87	0.50	0.01	0.47	
 1031.00	726.00	-10.15	10.27	-0.13	0.52	-0.01	0.54	
 1094.00	726.00	-7.55	10.46	1.31	0.60	-0.05	0.66	

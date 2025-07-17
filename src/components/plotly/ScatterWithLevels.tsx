@@ -19,7 +19,7 @@ export default function ScatterWithLevels({data}: ScatterWithLevelsProps){
 
 
     useEffect(() => {
-        document.body.style.overflow = "hidden";
+        if (window.innerWidth > 640) {document.body.style.overflow = "hidden";}
 
         return () => {
         document.body.style.overflow = "auto";
@@ -48,7 +48,7 @@ export default function ScatterWithLevels({data}: ScatterWithLevelsProps){
                     value={level}
                     onChange={(e) => setLevel(parseInt(e.target.value))}
                     className="
-                    w-[33%] h-4 appearance-none bg-gray-300 rounded-full cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-indigo-500 [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-white [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-indigo-500 [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-white
+                    w-[80%] sm:w-[33%] h-4 appearance-none bg-gray-300 rounded-full cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-indigo-500 [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-white [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-indigo-500 [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-white
                     "
                 />
                 <div>{data.length}</div>
