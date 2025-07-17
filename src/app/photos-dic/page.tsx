@@ -58,7 +58,7 @@ export default function PhotosDIC(){
             </div>
             <div className="flex-[2] sm:flex-[1] top-[3.25rem] h-full blur-bg rounded-sm pointer-events-none whitespace-pre-line p-4 flex flex-col gap-8">
                 <div className="flex-[2] relative">
-                  {activePath? <Image src={activePath} alt="Image affichée en détails" fill className="object-contain"/> : <div className="text-center h-full w-full flex items-center justify-center">Cliquez sur une image pour l'afficher ici en grand</div>}
+                  {activePath? <Image src={activePath} alt="Image affichée en détails" fill className="object-contain"/> : <div className="text-center h-full w-full flex items-center justify-center">Cliquez sur une image pour l&apos;afficher ici en grand</div>}
                 </div>
                 <div className="flex-[1] relative flex items-start">
                   <p>{activePath ? desc[parseInt(activePath.split("photo_DIC_setup")[1], 10)] : null}</p>
