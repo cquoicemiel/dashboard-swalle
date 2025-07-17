@@ -16,9 +16,9 @@ export default function PhotosDIC(){
       if (activePath === path ) {setActivePath("")}
       else { setActivePath(path)}
     }
-
     // fetch des descriptions photos
     useEffect(() => {
+       if (window.innerWidth < 640) {document.body.style.overflow = "hidden";}
       const fetchDescriptions = async () => {
         try {
           const res = await fetch("/descriptions-photos.json");
@@ -30,6 +30,11 @@ export default function PhotosDIC(){
       };
 
       fetchDescriptions();
+
+      return () => {
+        document.body.style.overflow = "auto";
+      };
+
     }, []);
 
 
