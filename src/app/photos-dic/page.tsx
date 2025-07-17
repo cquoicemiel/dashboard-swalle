@@ -39,7 +39,7 @@ export default function PhotosDIC(){
 
 
     return(
-        <div className="h-screen w-full flex flex-col sm:flex-row pt-[3.25rem]">
+        <div className="h-[100svh] w-full flex flex-col sm:flex-row pt-[3.25rem]">
             <h1 className="absolute top-2.5 left-[50%] translate-x-[-50%] text-xl text-center font-bold">Photos setup DIC</h1>
             <div className="flex-[2] h-full border-foreground border-t overflow-y-auto will-change-scroll">
               <div
