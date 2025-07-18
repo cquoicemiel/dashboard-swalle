@@ -32,6 +32,7 @@ export default function PhotosDIC(){
       fetchDescriptions();
 
       return () => {
+        // on remet le scroll quand on quitte cette page
         document.body.style.overflow = "auto";
       };
 
