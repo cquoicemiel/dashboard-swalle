@@ -31,7 +31,7 @@ export default function ScatterWithLevels({data}: ScatterWithLevelsProps){
 
 
     return(
-        <div className="h-[100svh] sm:h-full w-full flex flex-col">
+        <div className="h-[100vh] sm:h-full w-full flex flex-col">
             <div className="flex-[7] bg-background">
                 {/* {data? null : <div className="absolute top-1/2 left-1/2 translate-[-50%]">
                     Chargement des données...
